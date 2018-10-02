@@ -1,4 +1,4 @@
-# Bucket-List-Tracker
+# Clicky Game
 Front-end app created using react.
 # Link to deployed site
 [GitHub](https://github.com/atton88/Clicky-Game)
