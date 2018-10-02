@@ -4,7 +4,6 @@ import Header from "../Header";
 import cards from "../../cards.json";
 import "./Container.css";
 
-// import Footer from "./Footer";
 
 class Container extends Component {
   state = {
@@ -14,9 +13,8 @@ class Container extends Component {
     highScore: 0
   };
 
-  // handlePageChange = page => {
-  //   this.setState({ currentPage: page });
-  // };
+ 
+
 
   randomize = (arr) => {
     let currentIndex = arr.length, temporaryValue, randomIndex;
@@ -37,7 +35,10 @@ class Container extends Component {
 }
 
   handleClick = (id) => {
-    if (cards[id].hasClicked) {
+    const cardPicked = this.state.cards.filter(card => card.id === id)[0]
+    console.log(cardPicked)
+
+    if (cardPicked.hasClicked) {
       if (this.state.highScore < this.state.score){
         this.setState({
           highScore: this.state.score,
@@ -45,14 +46,17 @@ class Container extends Component {
           score: 0
         })
       } else {
-      
-      this.setState({
+        this.state.cards.forEach(elem => {
+          elem.hasClicked = false;
+        });
+        this.setState({
         message: "You guessed incorrectly. You Lose.",
-        score: 0
+        score: 0,
+        cards: cards
       })
     }
     } else {
-      cards[id].hasClicked = true;
+      cardPicked.hasClicked = true;
       this.setState({
         score: this.state.score + 1,
         message: "You guessed correctly!"
@@ -62,8 +66,9 @@ class Container extends Component {
   }
 
   render() {
+    {console.log(this.state.cards)}
     return (
-      <div class="bg-info">
+      <div className="bg-info">
         <Header score={this.state.score} message={this.state.message} highScore={this.state.highScore}/>
         <div className="container">
           
