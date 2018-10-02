@@ -9,10 +9,12 @@ const Header = props => (
         <p className="navbar-brand mb-0 h1">Clicky Game</p>
       </div>
       <div className="col-md-4">
-        <p className="navbar-brand mb-0 h1">Click an image to begin!</p>
+        <p className="navbar-brand mb-0 h1">{props.message}</p>
       </div>
       <div className="col-md-4">
-        <p className="navbar-brand mb-0 h1">Score</p>
+        <p className="navbar-brand mb-0 h1">Score: {props.score} </p>
+        <p className="navbar-brand mb-0 h1">High Score: {props.highScore}</p>
+
       </div>
     </div>
   </nav>
